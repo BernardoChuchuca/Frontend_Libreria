@@ -1,0 +1,50 @@
+<nav class="navbar bg-primary" data-bs-theme="dark" >
+    <div class="container">
+        <span class="navbar-brand h1">LIBROS DISPONIBLES</span>
+        <button type="button" class="btn btn-warning" (click)="openModal(aprobar)">Nuevo Libro</button>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
+
+
+<!-- modal donde recepta el nombre del evento tras la aprobacion del mismo -->
+<ng-template #aprobar let-c="close" let-d="dismiss">
+    <div class="modal-header text-center">
+        <h1>Crear nuevo Curso</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+
+
+
+    <div class="modal-body">
+        <form (ngSubmit)="addCurso()">
+            <b>Ingrese los datos del curso...</b>
+            <div class="py-3">
+                <input type="text" class="form-control text-center" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre">
+            </div>
+
+            <div class="py-3">
+                <input type="text" class="form-control text-center" id="instructor" [(ngModel)]="nombre_instructor" name="nombre_instructor" placeholder="Instructor">
+            </div>
+
+            <div class="py-3">
+                <input type="number" class="form-control text-center" id="costo"  [(ngModel)]="costo" name="costo" placeholder="Costo">
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Descripción:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="descripcion" name="descripcion" rows="3"></textarea>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary btnDerecha" (click)="addCurso()">Confirmar</button>
+                <button type="button" class="btn btn-danger btnDerecha" (click)="c('Close click')">Cancelar</button>
+
+            </div>
+        </form>
+    </div>
+
+
+
+  </ng-template>

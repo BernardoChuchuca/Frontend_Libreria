@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="col-md-12 py-3">
+        <div class="row">
+            <div class="col-md-4 py-3" *ngFor="let h of cursos">
+                <div class="card" >
+                    <div class="card-body" align="center">
+                        <h1 class="card-title">{{h.nombre}}</h1>
+                        <p class="card-subtitle mb-2 text-muted">Autor: {{h.nombre_instructor}} <br> Costo: {{h.costo}}</p>
+                        <p class="card-text">{{h.descripcion}}</p>
+                        <div align="center">
+                            <button type="button" class="btn btn-primary" (click)="openModal(aprobar)">ADQUIRIR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal donde recepta el nombre del evento tras la aprobacion del mismo -->
+<ng-template #aprobar let-c="close" let-d="dismiss">
+    <div class="modal-header text-center">
+        <h1>Confirmación de datos para adquirir</h1>
+        <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+
+    <div class="modal-body">
+        <p>Datos para adquirir libro</p>
+        <input type="text" class="form-control text-center" id="nombre" [(ngModel)]="nombre" name="nombre" placeholder="Nombre">
+        <input type="text" class="form-control text-center" id="correo"  [(ngModel)]="correo" name="correo" placeholder="Correo electrónico">
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary btnDerecha" (click)="addAlumno()">Confirmar</button>
+        <button type="button" class="btn btn-danger btnDerecha" (click)="c('Close click')">Cancelar</button>
+    </div>
+
+  </ng-template>
